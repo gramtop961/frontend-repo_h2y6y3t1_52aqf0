@@ -1,28 +1,35 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import { TrendingStrip, TopFiveStrip, CTAReview } from './components/Sections'
+import Footer from './components/Footer'
+import GlobeExplorer from './components/Globe'
+import CreateReviewModal from './components/CreateReviewModal'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [open, setOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white text-[#0F1724]">
+      <Header />
+      <main>
+        <section className="bg-gradient-to-b from-white to-[#F8FAFC]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+            <div className="rounded-xl border border-[#E2E8F0] bg-white p-4 text-sm text-[#0F1724]">
+              <p className="font-semibold">Design a modern, playful, highly shareable frontend for Rate the World — a global ratings & reviews site where people rate countries (and later cities/regions). The product must be mobile-first, fast, accessible (WCAG AA), and optimized for social virality. Include an interactive 3D globe explorer, detailed country pages, search, leaderboards, review flows, user auth (Google, Apple, GitHub + email), moderation UI, share-ready OG cards, and sponsor/affiliate placeholders. Provide pixel-perfect screens for all breakpoints + a clickable prototype showing every button state and full flows.</p>
+            </div>
+          </div>
+          <Hero />
+        </section>
+
+        <TrendingStrip />
+        <TopFiveStrip />
+        <GlobeExplorer />
+        <CTAReview />
+      </main>
+      <Footer />
+
+      <CreateReviewModal open={open} onClose={() => setOpen(false)} />
     </div>
   )
 }
-
-export default App
